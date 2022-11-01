@@ -56,8 +56,36 @@ function solve(arr) {
 
 }
 
-console.table(sortArr([ 21, 2, 45, 74, 85, 5, 105 ]));
-console.log("----------------------------------------------------------------");
-console.table(sortArr([ 74, 18, 10, 5, 84, 24, 105 ]));
-console.log("----------------------------------------------------------------");
-console.table(sortArr([ 64, 3, 10, 1, 99, 32, 115 ]));
+function basicSortArr(arr) {
+
+    let done = false;
+
+    while(!done) {
+
+        done = true;
+
+        for(let i = 0; i < arr.length; i++) {
+
+            if(arr[i] > arr[i + 1]) {
+                done = false;
+                let temp = arr[i];
+
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+            }
+
+        }
+
+    }
+
+    return arr;
+
+}
+
+// console.table(sortArr([ 21, 2, 45, 74, 85, 5, 105 ]));
+// console.log("----------------------------------------------------------------");
+// console.table(sortArr([ 74, 18, 10, 5, 84, 24, 105 ]));
+// console.log("----------------------------------------------------------------");
+// console.table(sortArr([ 64, 3, 10, 1, 99, 32, 115 ]));
+
+console.table(basicSortArr([ 21, 2, 45, 74, 85, 5, 105]));
