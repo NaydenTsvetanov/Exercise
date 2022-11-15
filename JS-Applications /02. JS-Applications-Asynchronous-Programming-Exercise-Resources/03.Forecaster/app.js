@@ -26,6 +26,9 @@ async function getWeather() {
 }
 
 async function createForcast(code) {
+    
+    const currentSelection = document.getElementById("current");
+    const forecastContainer = document.getElementById("forecast");
 
     const urlToday = `http://localhost:3030/jsonstore/forecaster/today/${code}`;
     const urlUpcoming = `http://localhost:3030/jsonstore/forecaster/upcoming/${code}`;
@@ -36,22 +39,31 @@ async function createForcast(code) {
     const responseUpcoming = await fetch(urlUpcoming);
     const dataUpcoming = await responseUpcoming.json();
 
-    createToday(dataToday);
+    const todayHTML = createToday(dataToday);
+
+    forecastContainer.style.display = "block";
+    currentSelection.appendChild(todayHTML);
+
+    createUpcoming(dataUpcoming);
+
+}
+
+function createUpcoming(data) {
+
+    
 
 }
 
 function createToday(data) {
     
     const { condition, high, low } = data.forecast;
-
-    const currentSelection = document.getElementById("current");
     
     const conditionContainer = document.createElement("div");
     conditionContainer.classList.add("forecasts");
 
     const conditionIconSpan = document.createElement("span");
-    conditionIconSpan.classList.add("condition");
-    conditionIconSpan.textContent = enumIcon[condition];
+    conditionIconSpan.classList.add("condition", "symbol");
+    conditionIconSpan.innerHTML = enumIcon[condition];
 
     const conditionSpan = document.createElement("span");
     conditionSpan.classList.add("condition");
@@ -62,7 +74,7 @@ function createToday(data) {
 
     const tempSpan = document.createElement("span");
     tempSpan.classList.add("forecast-data");
-    tempSpan.textContent = `${low}${enumIcon["Degrees"]}/${high}${enumIcon["Degrees"]}`;
+    tempSpan.innerHTML = `${low}${enumIcon["Degrees"]}/${high}${enumIcon["Degrees"]}`;
 
     const txtSpan = document.createElement("span");
     txtSpan.classList.add("forecast-data");
@@ -75,7 +87,7 @@ function createToday(data) {
     conditionContainer.appendChild(conditionIconSpan);
     conditionContainer.appendChild(conditionSpan);
 
-    currentSelection.appendChild(conditionContainer);
+    return conditionContainer;
 
 }
 
