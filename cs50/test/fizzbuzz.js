@@ -16,18 +16,3 @@ function solve() {
 }
 
 // solve();
-
-function sumUp(n) {
-
-    let result = 0;
-
-    for(let i = 1; i <= n; i++) {
-        result += i;
-        console.log(result);
-    }
-
-    console.log(result);
-
-}
-
-sumUp(1);
