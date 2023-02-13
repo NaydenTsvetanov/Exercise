@@ -13,6 +13,8 @@ function solve() {
     let confirmInfo = document.getElementsByClassName("confirm-list")[0];
     let verification = document.getElementById("verification");
 
+    console.log(firstName);
+
     function test() {
      
         let firstNameValue = firstName.value;

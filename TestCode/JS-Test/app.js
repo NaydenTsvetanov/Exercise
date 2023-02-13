@@ -10,7 +10,7 @@ playerImage.src = "images/character_0008.png";
 function animate() {
 
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEGHT);
-    //ctx.fillRect(50, 50, 100, 100);
+    ctx.fillRect(50, 50, 100, 100);
     ctx.drawImage(playerImage, 0, 0, 64, 64);
     requestAnimationFrame(animate);
 

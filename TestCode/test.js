@@ -115,3 +115,7 @@ console.log("----------------------------------------------------------------");
 console.table(sortArr([ 64, 3, 10, 1, 99, 32, 115 ]));
 
 console.table(basicRevSortArr([ 21, 2, 45, 74, 85, 5, 105]));
+
+const div = document.getElementById("div");
+
+console.log(typeof(div));
